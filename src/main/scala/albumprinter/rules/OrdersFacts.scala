@@ -18,6 +18,21 @@ class Discount(name: String, message: String, delta: Double){
   val Delta = delta
 }
 
+class ProductDiscount(productId: String, discount: Discount) {
+  val ProductId= productId
+  val Discount = discount
+}
+
+class OrderLineDiscount(orderLineId : String, discount: Discount ){
+  val OrderLineId = orderLineId
+  val Discount = discount
+}
+
+class OrderDiscount(orderId : String, discount: Discount){
+  val OrderId = orderId
+  val Discount = discount
+}
+
 class User(id:String, name: String, age: Int) {
   val Name = name
   val Age = age
@@ -50,16 +65,17 @@ class OrderLine(id:String, product: Product, amount: Int) extends OrderFact {
   val Amount = amount
   val Product = product
   val Id = id
-  val Discounts : java.util.List[Discount]  = new util.ArrayList[Discount]
-  def InitialPrice : Double = {product.Price * amount}
-  def TotalPrice = InitialPrice - Discounts.map(_.Delta).sum
+  //val Discounts : java.util.List[Discount]  = new util.ArrayList[Discount]
+  val InitialPrice : Double = {product.Price * amount}
+  //def TotalPrice = InitialPrice - Discounts.map(_.Delta).sum
 
 }
 
-class Order (id:String, orderLines: java.util.List[OrderLine], user: User) extends OrderFact {
+class Order (id:String, orderLines: List[OrderLine], user: User) extends OrderFact {
+  val Id = id
   val OrderLines = orderLines
   val User = user
-  val Discounts : java.util.List[Discount]  = new util.ArrayList[Discount]()
-  def InitialPrice = OrderLines.map(_.TotalPrice).sum
-  def TotalPrice = InitialPrice - Discounts.map(_.Delta).sum
+  //val Discounts : java.util.List[Discount]  = new util.ArrayList[Discount]()
+  //def InitialPrice = OrderLines.map(_.TotalPrice).sum
+  //def TotalPrice = InitialPrice - Discounts.map(_.Delta).sum
 }
