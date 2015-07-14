@@ -10,9 +10,11 @@ class OrderRulesTest extends FunSpec with ShouldMatchers {
   describe("Order rule Engine") {
 
     describe("BLL tests") {
-      val ol = new OrderLine("orderline_id", new Product("product_id", "PAP_24", "Desc", 3.0), amount = 19)
-
+      
       describe("OrderLine") {
+        val product =new Product("product_id", "PAP_24", "Desc", 3.0) 
+        val ol = new OrderLine("orderline_id", product, amount = 19)
+
         it("should have an id") {
           ol.Id should be("orderline_id")
         }
@@ -21,6 +23,21 @@ class OrderRulesTest extends FunSpec with ShouldMatchers {
         }
         it("should have an amount"){
           ol.Amount should be(19)
+        }
+      }
+      describe("Product"){
+        val product =new Product("product_id", "PAP_24", "Desc", 3.0) 
+        it("should have an id"){
+          product.Id should be("product_id")
+        }
+        it("should have pap code"){
+          product.Pap should be("PAP_24")
+        }
+        it("should have description"){
+          product.Description should be("Desc")
+        }
+        it("should have initial price"){
+          product.Price should be(3.0)
         }
       }
       describe("User") {
