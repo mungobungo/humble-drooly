@@ -3,12 +3,14 @@ package albumprinter.rules
 import java.util
 
 import scala.collection.convert.wrapAsScala._
+import java.beans._
 /**s
  * Created by otaykalo on 12-7-2015.
  * Original domain model for orders checking
  */
 
 sealed trait OrderFact
+
 
 class Discount(name: String, message: String, delta: Double){
   val Name = name
@@ -41,7 +43,7 @@ class GoodProduct(id: Int, pap: String, description: String, price: Double) {
 //
 //case object WallDecorWoodProduct extends  Product (6, "PAP_302", "Wall decor wood", 60)
 
-//@BeanInfo
+
 class OrderLine(product: GoodProduct, amount: Int) extends OrderFact {
 
   val Amount = amount
