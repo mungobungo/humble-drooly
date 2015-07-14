@@ -18,12 +18,13 @@ class Discount(name: String, message: String, delta: Double){
   val Delta = delta
 }
 
-class User(name: String, age: Int) {
+class User(id:String, name: String, age: Int) {
   val Name = name
   val Age = age
+  val Id = id
 }
 
-class GoodProduct(id: Int, pap: String, description: String, price: Double) {
+class Product(id: String, pap: String, description: String, price: Double) {
 
   val Id = id
   val Pap = pap
@@ -44,17 +45,18 @@ class GoodProduct(id: Int, pap: String, description: String, price: Double) {
 //case object WallDecorWoodProduct extends  Product (6, "PAP_302", "Wall decor wood", 60)
 
 
-class OrderLine(product: GoodProduct, amount: Int) extends OrderFact {
+class OrderLine(id:String, product: Product, amount: Int) extends OrderFact {
 
   val Amount = amount
   val Product = product
+  val Id = id
   val Discounts : java.util.List[Discount]  = new util.ArrayList[Discount]
   def InitialPrice : Double = {product.Price * amount}
   def TotalPrice = InitialPrice - Discounts.map(_.Delta).sum
 
 }
 
-class Order (orderLines: java.util.List[OrderLine], user: User) extends OrderFact {
+class Order (id:String, orderLines: java.util.List[OrderLine], user: User) extends OrderFact {
   val OrderLines = orderLines
   val User = user
   val Discounts : java.util.List[Discount]  = new util.ArrayList[Discount]()

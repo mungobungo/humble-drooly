@@ -22,8 +22,8 @@ project/plugins/project/
 bin/*
 .cache-*
 =======
-/bin/
->>>>>>> fbdd8747aa13f314ec237f746297f7f12bc5759e
+
+
+# eclipse
 .classpath
-.project
 .settings/*
