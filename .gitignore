@@ -27,3 +27,4 @@ bin/*
 # eclipse
 .classpath
 .settings/*
+/bin/
