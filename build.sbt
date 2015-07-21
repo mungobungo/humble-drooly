@@ -8,6 +8,8 @@ javaHome := sys.env.get("JAVA_HOME")  map file
 
 scalaVersion := "2.10.4"
 
+ivyScala := ivyScala.value map { _.copy(overrideScalaVersion = true) }
+
 libraryDependencies ++= Seq(
   "com.thoughtworks.xstream" % "xstream" % "1.4.7",
   "org.slf4j" % "slf4j-api" % "1.7.7",
@@ -33,6 +35,7 @@ libraryDependencies ++= Seq(
     "io.spray" % "spray-can" % "1.1-M8",
     "io.spray" % "spray-http" % "1.1-M8",
     "io.spray" % "spray-routing" % "1.1-M8",
+    "io.spray" %%  "spray-json" % "1.3.2",
     "com.typesafe.akka" %% "akka-actor" % "2.1.4",
     "com.typesafe.akka" %% "akka-slf4j" % "2.1.4",
     "com.typesafe.slick" %% "slick" % "1.0.1",

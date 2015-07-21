@@ -4,6 +4,7 @@ import java.util
 
 import scala.collection.convert.wrapAsScala._
 import java.beans._
+import spray.json._
 /**s
  * Created by otaykalo on 12-7-2015.
  * Original domain model for orders checking
@@ -33,18 +34,15 @@ class OrderDiscount(orderId : String, discount: Discount){
   val Discount = discount
 }
 
-class User(id:String, name: String, age: Int) {
+case class User(id:String, name: String, age: Int) {
   val Name = name
   val Age = age
   val Id = id
 }
 
-class Product(id: String, pap: String, description: String, price: Double) {
+case class Product(id: String, pap: String, description: String, price: Double) {
 
-  val Id = id
-  val Pap = pap
-  val Price = price
-  val Description = description
+
 }
 
 //case  object PrintProduct1013 extends Product(1, "PAP_101", "print 10x13", 0.1)
@@ -66,7 +64,7 @@ class OrderLine(id:String, product: Product, amount: Int) extends OrderFact {
   val Product = product
   val Id = id
   //val Discounts : java.util.List[Discount]  = new util.ArrayList[Discount]
-  val InitialPrice : Double = {product.Price * amount}
+  val InitialPrice : Double = {product.price * amount}
   //def TotalPrice = InitialPrice - Discounts.map(_.Delta).sum
 
 }
@@ -78,4 +76,9 @@ class Order (id:String, orderLines: List[OrderLine], user: User) extends OrderFa
   //val Discounts : java.util.List[Discount]  = new util.ArrayList[Discount]()
   //def InitialPrice = OrderLines.map(_.TotalPrice).sum
   //def TotalPrice = InitialPrice - Discounts.map(_.Delta).sum
+}
+
+
+object MyJsonProtocol extends DefaultJsonProtocol {
+  implicit val colorFormat = jsonFormat4(Product)
 }
