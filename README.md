@@ -22,7 +22,7 @@ make sure that Scala and SBT are accessible in command line
 in some wierd scenarios you should set JAVA_HOME variable to correct JDK path
 
 
-after go to root folder of the project and run
+after that, go to root folder of the project and run
 
 ``` Batchfile
 sbt clean compile test
