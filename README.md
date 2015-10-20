@@ -30,11 +30,11 @@ sbt clean compile test
 
 it will get all the dependencies , build solution and launch tests.
 
-classes of domain model can be found in src\main\scala\albumprinter\rules\OrderFacts.scala
+classes of domain model can be found in [OrderFacts.scala](src\main\scala\albumprinter\rules\OrderFacts.scala)
 
-tests can be found in src\test\scala\albumprinter\rules\OrderRulesTest.scala
+tests can be found in [OrderRulesTest.scala](src\test\scala\albumprinter\rules\OrderRulesTest.scala)
 
-rules can be found in src\main\resources\albumprinter.rules\Orders.drl
+rules can be found in [Orders.drl](src\main\resources\albumprinter.rules\Orders.drl)
 
 
 
