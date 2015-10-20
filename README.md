@@ -53,6 +53,10 @@ tests can be found in [OrderRulesTest.scala](src/test/scala/albumprinter/rules/O
 
 rules can be found in [Orders.drl](src/main/resources/albumprinter.rules/Orders.drl)
 
+# Additional links
+Why scala and not java
+you can look here
+https://manthapavankumar.wordpress.com/2013/09/22/jboss-drools-complex-example/
 
 
 
