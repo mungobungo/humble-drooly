@@ -2,7 +2,6 @@ package albumprinter.rules
 
 import java.util.List
 
-
 declare IsSmallOrderLine
     orderLine : OrderLine
 end
@@ -55,7 +54,7 @@ end
 
 rule "aluminium wall decor gets 10% additional discount"
     when
-        $ol: OrderLine(Product.Pap == "PAP_301")
+        $ol: OrderLine(this.Product.Pap == "PAP_24")
     then
         System.out.println("OrderLine '" + $ol.Product.Description +  "' gets additional discount for aluminium.");
 

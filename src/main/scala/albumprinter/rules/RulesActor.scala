@@ -2,7 +2,7 @@ package albumprinter.rules
 
 import akka.actor._
 import spray.http.StatusCodes._
-import albumprinter.rules.RulesService
+
 
 
 /**

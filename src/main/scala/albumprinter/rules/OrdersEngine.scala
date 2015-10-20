@@ -11,12 +11,12 @@ import java.util.ArrayList
 
 import scala.collection.JavaConversions.iterableAsScalaIterable
 
-object OrdersEngine {
+class OrdersEngine {
   def calculateOrderLine(orderLine: OrderLine) : List[String] = {
     val orderLineDiscounts = new util.ArrayList[String]
     val session = Kie.newSession
 
-    //session.setGlobal("orderLineDiscounts", orderLineDiscounts)
+   // session.setGlobal("orderLineDiscounts", orderLineDiscounts)
     session.insert(orderLine)
     session.fireAllRules()
     session.dispose()

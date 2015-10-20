@@ -41,7 +41,10 @@ case class User(id:String, name: String, age: Int) {
 }
 
 case class Product(id: String, pap: String, description: String, price: Double) {
-
+	val Id = id
+	val Pap = pap
+	val Description = description
+	val Price = price
 
 }
 
@@ -63,9 +66,9 @@ class OrderLine(id:String, product: Product, amount: Int) extends OrderFact {
   val Amount = amount
   val Product = product
   val Id = id
-  //val Discounts : java.util.List[Discount]  = new util.ArrayList[Discount]
+  val Discounts : java.util.List[Discount]  = new util.ArrayList[Discount]
   val InitialPrice : Double = {product.price * amount}
-  //def TotalPrice = InitialPrice - Discounts.map(_.Delta).sum
+  def TotalPrice = InitialPrice - Discounts.map(_.Delta).sum
 
 }
 
@@ -73,9 +76,9 @@ class Order (id:String, orderLines: List[OrderLine], user: User) extends OrderFa
   val Id = id
   val OrderLines = orderLines
   val User = user
-  //val Discounts : java.util.List[Discount]  = new util.ArrayList[Discount]()
-  //def InitialPrice = OrderLines.map(_.TotalPrice).sum
-  //def TotalPrice = InitialPrice - Discounts.map(_.Delta).sum
+  val Discounts : java.util.List[Discount]  = new util.ArrayList[Discount]()
+  def InitialPrice = OrderLines.map(_.TotalPrice).sum
+  def TotalPrice = InitialPrice - Discounts.map(_.Delta).sum
 }
 
 

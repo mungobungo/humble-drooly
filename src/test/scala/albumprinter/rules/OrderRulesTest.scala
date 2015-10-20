@@ -6,9 +6,11 @@ package albumprinter.rules
  */
 
 import org.scalatest.{ ShouldMatchers, FunSpec }
+import scala.collection.JavaConverters._
 class OrderRulesTest extends FunSpec with ShouldMatchers {
   describe("Order rule Engine") {
 
+    
     describe("BLL tests") {
 
       describe("OrderLine") {
@@ -118,6 +120,23 @@ class OrderRulesTest extends FunSpec with ShouldMatchers {
       }
       
 
+    }
+    describe("rule engine Tests"){
+
+        var engineRule = new OrdersEngine()
+        val user = new User(id = "user_id", name = "Oleg", age = 33)
+        val product1 = new Product("product_id", "PAP_24", "Desc", 3.0)
+        val ol1 = new OrderLine("orderline_id", product1, amount = 19)
+        val product2 = new Product("product_id", "PAP_24", "Desc", 3.0)
+        val ol2 = new OrderLine("orderline_id", product2, amount = 19)
+        val order = new Order(id = "order_id", orderLines = List(ol1, ol2 ), user )
+
+        engineRule.calculateOrderLine(ol1)
+         val discounts = ol1.Discounts.asScala
+         discounts.foreach( d => println (d.Name + " " + d.Message + " " + d.Delta))
+        it("should get 2 discounts - one for PAP, other for small amount") {
+          discounts.length should be (2)
+        }
     }
   }
 }
